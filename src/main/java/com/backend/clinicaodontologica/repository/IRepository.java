@@ -6,4 +6,5 @@ public interface IRepository<T> {
     T registrar(T t);
     List<T> listarTodos();
     T buscarPorId(int id);
+    T actualizar(T t);
 }
