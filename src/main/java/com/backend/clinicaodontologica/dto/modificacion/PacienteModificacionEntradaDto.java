@@ -1,6 +1,8 @@
-package com.backend.clinicaodontologica.dto.entrada.paciente;
+package com.backend.clinicaodontologica.dto.modificacion;
 
+import com.backend.clinicaodontologica.dto.entrada.paciente.DomicilioEntradaDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.validation.Valid;
 import javax.validation.constraints.FutureOrPresent;
@@ -9,7 +11,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-public class PacienteEntradaDto {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class PacienteModificacionEntradaDto {
+
+    @NotNull(message = "Debe proveerse el id del paciente que se desea modificar")
+    private Long id;
 
     @NotNull(message = "El nombre del paciente no puede ser nulo")
     @NotBlank(message = "Debe especificarse el nombre del paciente")
@@ -22,11 +28,11 @@ public class PacienteEntradaDto {
     private String apellido;
 
     @NotNull(message = "El dni del paciente no puede ser nulo")
+    @Size(max = 12, message = "El nombre debe tener hasta 12 digitos")
     private Integer dni;
 
     @FutureOrPresent(message = "La fecha no puede ser anterior al día de hoy")
     @NotNull(message = "Debe especificarse la fecha de ingreso del paciente")
-    //@JsonProperty("fecha_ingreso")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate fechaIngreso;
 
@@ -34,16 +40,24 @@ public class PacienteEntradaDto {
     @Valid
     private DomicilioEntradaDto domicilioEntradaDto;
 
-
-    public PacienteEntradaDto() {
+    public PacienteModificacionEntradaDto() {
     }
 
-    public PacienteEntradaDto(String nombre, String apellido, Integer dni, LocalDate fechaIngreso, DomicilioEntradaDto domicilioEntradaDto) {
+    public PacienteModificacionEntradaDto(Long id, String nombre, String apellido, Integer dni, LocalDate fechaIngreso, DomicilioEntradaDto domicilioEntradaDto) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechaIngreso = fechaIngreso;
         this.domicilioEntradaDto = domicilioEntradaDto;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
