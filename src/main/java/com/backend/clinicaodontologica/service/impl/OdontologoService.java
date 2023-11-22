@@ -2,7 +2,9 @@ package com.backend.clinicaodontologica.service.impl;
 
 import com.backend.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
+import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
 import com.backend.clinicaodontologica.entity.Odontologo;
+import com.backend.clinicaodontologica.entity.Paciente;
 import com.backend.clinicaodontologica.repository.OdontologoRepository;
 import com.backend.clinicaodontologica.service.IOdontologoService;
 import com.backend.clinicaodontologica.utils.JsonPrinter;
@@ -18,11 +20,11 @@ public class OdontologoService implements IOdontologoService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(OdontologoService.class);
 
-    private OdontologoRepository odontologoIRepository;
+    private OdontologoRepository odontologoRepository;
     private ModelMapper modelMapper;
 
-    public OdontologoService(OdontologoRepository odontologoIRepository, ModelMapper modelMapper) {
-        this.odontologoIRepository = odontologoIRepository;
+    public OdontologoService(OdontologoRepository odontologoRepository, ModelMapper modelMapper) {
+        this.odontologoRepository = odontologoRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -33,7 +35,7 @@ public class OdontologoService implements IOdontologoService {
         Odontologo odontoloEntidad =  modelMapper.map(odontologo,Odontologo.class);
 
         //mandamos a persistir a la capa repository y obtenemos una entidad
-        Odontologo odontologoAPersistir= odontologoIRepository.save(odontoloEntidad);
+        Odontologo odontologoAPersistir= odontologoRepository.save(odontoloEntidad);
         //tranformamos la entidad obtenida en salidaDto
         OdontologoSalidaDto odontologoSalidaDto = modelMapper.map(odontologoAPersistir, OdontologoSalidaDto.class);
         LOGGER.info("OdontologoSalidaDto: " + JsonPrinter.toString(odontologoSalidaDto));
@@ -46,8 +48,16 @@ public class OdontologoService implements IOdontologoService {
     }
 
     @Override
-    public OdontologoSalidaDto buscarOdontologoPorId(int id) {
-        return null;
+    public OdontologoSalidaDto buscarOdontologoPorId(Long id) {
+        Odontologo odontologoBuscado = odontologoRepository.findById(id).orElse(null);
+        OdontologoSalidaDto odontologoEncontrado = null;
+
+        if (odontologoBuscado != null) {
+            odontologoEncontrado = modelMapper.map(odontologoBuscado, OdontologoSalidaDto.class);
+            LOGGER.info("Odontologo encontrado: {}", JsonPrinter.toString(odontologoEncontrado));
+        } else LOGGER.error("El id no se encuentra registrado en la base de datos");
+
+        return odontologoEncontrado;
     }
 
     @Override
@@ -56,7 +66,7 @@ public class OdontologoService implements IOdontologoService {
     }
 
     @Override
-    public void eliminarOdontologo(int id) {
+    public void eliminarOdontologo(Long id) {
 
     }
 }

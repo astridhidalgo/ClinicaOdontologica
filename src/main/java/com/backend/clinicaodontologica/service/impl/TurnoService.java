@@ -2,8 +2,10 @@ package com.backend.clinicaodontologica.service.impl;
 
 import com.backend.clinicaodontologica.dto.entrada.turno.TurnoEntradaDto;
 import com.backend.clinicaodontologica.dto.modificacion.TurnoModificacionEntradaDto;
+import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
+import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
 import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
-import com.backend.clinicaodontologica.repository.PacienteRepository;
+import com.backend.clinicaodontologica.entity.Odontologo;
 import com.backend.clinicaodontologica.repository.TurnoRepository;
 import com.backend.clinicaodontologica.service.ITurnoService;
 import org.modelmapper.ModelMapper;
@@ -23,12 +25,14 @@ public class TurnoService implements ITurnoService {
 
     private final OdontologoService odontologoService;
     private final PacienteService pacienteService;
+    private final Odontologo odontologo;
 
-    public TurnoService(TurnoRepository turnoRepository, ModelMapper modelMapper, OdontologoService odontologoService, PacienteService pacienteService) {
+    public TurnoService(TurnoRepository turnoRepository, ModelMapper modelMapper, OdontologoService odontologoService, PacienteService pacienteService, Odontologo odontologo) {
         this.turnoRepository = turnoRepository;
         this.modelMapper = modelMapper;
         this.odontologoService = odontologoService;
         this.pacienteService = pacienteService;
+        this.odontologo = odontologo;
         configureMapping();
     }
 
@@ -36,6 +40,15 @@ public class TurnoService implements ITurnoService {
     public TurnoSalidaDto registrarTurno(TurnoEntradaDto turno) {
 
         //veridicar que el paciente y el odontologo existan
+        OdontologoSalidaDto odontologoBuscado = odontologoService.buscarOdontologoPorId(turno.getOdontologoId());
+        PacienteSalidaDto pacienteBuscado = pacienteService.buscarPacientePorId(turno.getPacienteId());
+
+        if (odontologoBuscado != null && pacienteBuscado != null) {
+            //registrar turno
+        } else {
+            //
+        }
+
         return null;
     }
 

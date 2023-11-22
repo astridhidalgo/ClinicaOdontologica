@@ -9,16 +9,17 @@ import java.time.LocalDate;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TurnoEntradaDto {
     private LocalDate fechayHora;
-    private Odontologo odontologo;
-    private Paciente paciente;
+    private Long odontologoId;
+    private Long pacienteId;
 
     public TurnoEntradaDto() {
     }
 
-    public TurnoEntradaDto(LocalDate fechayHora, Odontologo odontologo, Paciente paciente) {
+
+    public TurnoEntradaDto(LocalDate fechayHora, Long odontologoId, Long pacienteId) {
         this.fechayHora = fechayHora;
-        this.odontologo = odontologo;
-        this.paciente = paciente;
+        this.odontologoId = odontologoId;
+        this.pacienteId = pacienteId;
     }
 
     public LocalDate getFechayHora() {
@@ -29,19 +30,19 @@ public class TurnoEntradaDto {
         this.fechayHora = fechayHora;
     }
 
-    public Odontologo getOdontologo() {
-        return odontologo;
+    public Long getOdontologoId() {
+        return odontologoId;
     }
 
-    public void setOdontologo(Odontologo odontologo) {
-        this.odontologo = odontologo;
+    public void setOdontologoId(Long odontologoId) {
+        this.odontologoId = odontologoId;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public Long getPacienteId() {
+        return pacienteId;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setPacienteId(Long pacienteId) {
+        this.pacienteId = pacienteId;
     }
 }
