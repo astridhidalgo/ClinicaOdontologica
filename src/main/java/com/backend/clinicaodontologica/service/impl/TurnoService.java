@@ -4,6 +4,7 @@ import com.backend.clinicaodontologica.dto.entrada.turno.TurnoEntradaDto;
 import com.backend.clinicaodontologica.dto.modificacion.TurnoModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
 import com.backend.clinicaodontologica.repository.PacienteRepository;
+import com.backend.clinicaodontologica.repository.TurnoRepository;
 import com.backend.clinicaodontologica.service.ITurnoService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -16,18 +17,25 @@ public class TurnoService implements ITurnoService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(PacienteService.class);
 
-    private PacienteRepository pacienteRepository;
+    private final TurnoRepository turnoRepository;
 
     private ModelMapper modelMapper;
 
-    public TurnoService(PacienteRepository pacienteRepository, ModelMapper modelMapper) {
-        this.pacienteRepository = pacienteRepository;
+    private final OdontologoService odontologoService;
+    private final PacienteService pacienteService;
+
+    public TurnoService(TurnoRepository turnoRepository, ModelMapper modelMapper, OdontologoService odontologoService, PacienteService pacienteService) {
+        this.turnoRepository = turnoRepository;
         this.modelMapper = modelMapper;
+        this.odontologoService = odontologoService;
+        this.pacienteService = pacienteService;
         configureMapping();
     }
 
     @Override
     public TurnoSalidaDto registrarTurno(TurnoEntradaDto turno) {
+
+        //veridicar que el paciente y el odontologo existan
         return null;
     }
 
