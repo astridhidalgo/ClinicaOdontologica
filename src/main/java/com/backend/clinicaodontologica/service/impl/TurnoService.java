@@ -45,8 +45,9 @@ public class TurnoService implements ITurnoService {
 
         if (odontologoBuscado != null && pacienteBuscado != null) {
             //registrar turno
+
         } else {
-            //
+            //mandar exception
         }
 
         return null;
