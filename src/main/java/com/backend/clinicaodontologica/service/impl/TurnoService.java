@@ -6,8 +6,11 @@ import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto
 import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
 import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
 import com.backend.clinicaodontologica.entity.Odontologo;
+import com.backend.clinicaodontologica.entity.Turno;
+import com.backend.clinicaodontologica.exceptions.BadRequestException;
 import com.backend.clinicaodontologica.repository.TurnoRepository;
 import com.backend.clinicaodontologica.service.ITurnoService;
+import com.backend.clinicaodontologica.utils.JsonPrinter;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,32 +28,38 @@ public class TurnoService implements ITurnoService {
 
     private final OdontologoService odontologoService;
     private final PacienteService pacienteService;
-    private final Odontologo odontologo;
 
-    public TurnoService(TurnoRepository turnoRepository, ModelMapper modelMapper, OdontologoService odontologoService, PacienteService pacienteService, Odontologo odontologo) {
+    public TurnoService(TurnoRepository turnoRepository, ModelMapper modelMapper, OdontologoService odontologoService, PacienteService pacienteService) {
         this.turnoRepository = turnoRepository;
         this.modelMapper = modelMapper;
         this.odontologoService = odontologoService;
         this.pacienteService = pacienteService;
-        this.odontologo = odontologo;
         configureMapping();
     }
 
     @Override
-    public TurnoSalidaDto registrarTurno(TurnoEntradaDto turno) {
-
+    public TurnoSalidaDto registrarTurno(TurnoEntradaDto turno) throws BadRequestException{
         //veridicar que el paciente y el odontologo existan
         OdontologoSalidaDto odontologoBuscado = odontologoService.buscarOdontologoPorId(turno.getOdontologoId());
         PacienteSalidaDto pacienteBuscado = pacienteService.buscarPacientePorId(turno.getPacienteId());
-
-        if (odontologoBuscado != null && pacienteBuscado != null) {
-            //registrar turno
-
-        } else {
-            //mandar exception
+        if(odontologoBuscado == null){
+            throw new BadRequestException("odontologo no existe");
         }
+        if(pacienteBuscado == null){
+            throw new BadRequestException("odontologo es nulo");
+        }
+        if (odontologoBuscado != null && pacienteBuscado != null) {
+            LOGGER.info("TurnoEntradaDto: " + JsonPrinter.toString(turno));
+            Turno TurnoEntidad =  modelMapper.map(turno,Turno.class);
 
-        return null;
+            Turno turnoAPersistir= turnoRepository.save(TurnoEntidad);
+
+            TurnoSalidaDto turnoSalidaDto = modelMapper.map(turnoAPersistir, TurnoSalidaDto.class);
+            LOGGER.info("TurnoSalidaDto: " + JsonPrinter.toString(turnoSalidaDto));
+            return turnoSalidaDto;
+        } else {
+       throw new BadRequestException("odontologo y paciente no existen");
+        }
     }
 
     @Override

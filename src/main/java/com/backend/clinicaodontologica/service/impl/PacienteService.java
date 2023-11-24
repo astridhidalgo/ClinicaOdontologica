@@ -20,9 +20,7 @@ import java.util.List;
 public class PacienteService implements IPacienteService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(PacienteService.class);
-
     private PacienteRepository pacienteRepository;
-
     private ModelMapper modelMapper;
 
     @Autowired //no es necesario ponerlo
@@ -33,13 +31,9 @@ public class PacienteService implements IPacienteService {
     }
 
     public PacienteSalidaDto registrarPaciente(PacienteEntradaDto paciente) {
-        //convertimos mediante el mapper de dtoEntrada a entidad
         LOGGER.info("PacienteEntradaDto: " + JsonPrinter.toString(paciente));
         Paciente pacienteEntidad = modelMapper.map(paciente, Paciente.class);
-
-        //mandamos a persistir a la capa dao y obtenemos una entidad
         Paciente pacienteAPersistir = pacienteRepository.save(pacienteEntidad);
-        //transformamos la entidad obtenida en salidaDto
         PacienteSalidaDto pacienteSalidaDto = modelMapper.map(pacienteAPersistir, PacienteSalidaDto.class);
         LOGGER.info("PacienteSalidaDto: " + JsonPrinter.toString(pacienteSalidaDto));
         return pacienteSalidaDto;
@@ -80,15 +74,15 @@ public class PacienteService implements IPacienteService {
     @Override
     public PacienteSalidaDto actualizarPaciente(PacienteModificacionEntradaDto paciente) {
         Paciente pacienteRecibido = modelMapper.map(paciente, Paciente.class);
-        Paciente pacienteAActualizar = pacienteRepository.findById(pacienteRecibido.getId()).orElse(null);
+        Paciente pacienteActualizar = pacienteRepository.findById(pacienteRecibido.getId()).orElse(null);
 
         PacienteSalidaDto pacienteSalidaDto = null;
 
-        if (pacienteAActualizar != null) {
-            pacienteAActualizar = pacienteRecibido;
-            pacienteRepository.save(pacienteAActualizar);
+        if (pacienteActualizar != null) {
+            pacienteActualizar = pacienteRecibido;
+            pacienteRepository.save(pacienteActualizar);
 
-            pacienteSalidaDto = modelMapper.map(pacienteAActualizar, PacienteSalidaDto.class);
+            pacienteSalidaDto = modelMapper.map(pacienteActualizar, PacienteSalidaDto.class);
             LOGGER.warn("Paciente actualizado: {}", JsonPrinter.toString(pacienteSalidaDto));
 
         } else {

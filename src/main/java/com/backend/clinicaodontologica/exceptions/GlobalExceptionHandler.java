@@ -39,7 +39,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> badRequestException(BadRequestException exception){
         Map<String, String> mensaje = new HashMap<>();
-        mensaje.put("mensaje", "Recurso no encontrado: " + exception.getMessage());
+        mensaje.put("mensaje", exception.getMessage());
         return mensaje;
     }
 

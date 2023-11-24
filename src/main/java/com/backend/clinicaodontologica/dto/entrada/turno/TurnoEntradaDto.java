@@ -4,29 +4,33 @@ import com.backend.clinicaodontologica.entity.Odontologo;
 import com.backend.clinicaodontologica.entity.Paciente;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TurnoEntradaDto {
-    private LocalDate fechayHora;
+    private LocalDateTime fechayHora;
+    @NotNull(message = "el odontólogoId no puede ser nulo")
     private Long odontologoId;
+    @NotNull(message = "el pacienteId no puede ser nulo")
     private Long pacienteId;
 
     public TurnoEntradaDto() {
     }
 
 
-    public TurnoEntradaDto(LocalDate fechayHora, Long odontologoId, Long pacienteId) {
+    public TurnoEntradaDto(LocalDateTime fechayHora, Long odontologoId, Long pacienteId) {
         this.fechayHora = fechayHora;
         this.odontologoId = odontologoId;
         this.pacienteId = pacienteId;
     }
 
-    public LocalDate getFechayHora() {
+    public LocalDateTime getFechayHora() {
         return fechayHora;
     }
 
-    public void setFechayHora(LocalDate fechayHora) {
+    public void setFechayHora(LocalDateTime fechayHora) {
         this.fechayHora = fechayHora;
     }
 

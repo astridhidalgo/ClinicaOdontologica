@@ -1,0 +1,61 @@
+###################BUSCAR PACIENTE POR ID
+POST http://localhost:8081/pacientes/registrar HTTP/1.1
+Content-Type: application/json
+
+{
+"nombre":"Maria",
+  "apellido": "Mora",
+  "dni": 123456,
+  "fechaIngreso": "2023-12-10",
+  "domicilioEntradaDto":{
+    "calle": "argomedo",
+    "numero":344,
+    "localidad":"santiago",
+     "provincia": "santiago"
+  }
+}
+
+###################BUSCAR PACIENTE POR ID
+GET http://localhost:8081/pacientes/1 HTTP/1.1
+
+###################BUSCAR TODOS LOS PACIENTES
+GET http://localhost:8081/pacientes/listar HTTP/1.1
+
+###################ACTUALIZAR PACIENTE POR ID
+PUT http://localhost:8081/pacientes/actualizar HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nombre":"Astrid",
+  "apellido": "Hidalgo",
+  "dni": 123456,
+  "fechaIngreso": "2023-12-10",
+  "domicilioModificacionEntradaDto":{
+    "id": 2,
+    "calle": "argomedo",
+    "numero":344,
+    "localidad":"santiago",
+    "provincia": "santiago"
+  }
+}
+
+###################ELIMINAR PACIENTE POR ID
+DELETE http://localhost:8081/pacientes/registrar HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre":"Astrid",
+  "apellido": "Hidalgo",
+  "dni": 123456,
+  "fechaIngreso": "2023-12-10",
+  "domicilioEntradaDto":{
+    "calle": "argomedo",
+    "numero":344,
+    "localidad":"santiago",
+    "provincia": "santiago"
+  }
+}
+
+
+

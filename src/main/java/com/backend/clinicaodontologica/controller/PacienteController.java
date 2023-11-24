@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
@@ -25,6 +25,11 @@ public class PacienteController {
     @PostMapping("/registrar")
     public ResponseEntity<PacienteSalidaDto> registrarPaciente(@RequestBody @Valid PacienteEntradaDto paciente) {
         return new ResponseEntity<>(pacienteService.registrarPaciente(paciente), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/ping")
+    public String ping() {
+        return "estoy vivo";
     }
 
 
