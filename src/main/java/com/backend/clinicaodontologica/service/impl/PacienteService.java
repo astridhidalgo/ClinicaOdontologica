@@ -44,15 +44,6 @@ public class PacienteService implements IPacienteService {
                 .stream()
                 .map(paciente -> modelMapper.map(paciente, PacienteSalidaDto.class))
                 .toList();
-
-
-        //List<Paciente> pacientes = pacienteIDao.listarTodos();
-        //List<PacienteSalidaDto> pacienteSalidaDtos = new ArrayList<>();
-        //for (Paciente paciente : pacientes){
-        //    PacienteSalidaDto pacienteSalidaDto = modelMapper.map(paciente, PacienteSalidaDto.class);
-        //    pacienteSalidaDtos.add(pacienteSalidaDto);
-        //}
-
         if (LOGGER.isInfoEnabled())
             LOGGER.info("Listado de todos los pacientes: {}", JsonPrinter.toString(pacientesSalidaDto));
         return pacientesSalidaDto;
@@ -89,7 +80,6 @@ public class PacienteService implements IPacienteService {
             LOGGER.error("No fue posible actualizar el paciente porque no se encuentra en nuestra base de datos");
             //lanzar excepcion correspondiente
         }
-
 
         return pacienteSalidaDto;
     }

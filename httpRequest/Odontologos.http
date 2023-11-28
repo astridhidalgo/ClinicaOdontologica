@@ -1,0 +1,33 @@
+###################CREAR ODONTOLOGO
+POST http://localhost:8081/odontologos/registrar HTTP/1.1
+Content-Type: application/json
+
+{
+"nombre":"Fer",
+  "apellido": "Mercy",
+  "matricula": "12345678911"
+}
+
+###################BUSCAR DONTOLOGO POR ID
+GET http://localhost:8081/odontologos/2 HTTP/1.1
+
+###################BUSCAR TODOS LOS ODONTOLOGOS
+GET http://localhost:8081/odontologos/listar HTTP/1.1
+
+###################ACTUALIZAR ODONTOLOGOS POR ID
+PUT http://localhost:8081/odontologos/actualizar HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "matricula":"12345678910",
+  "nombre": "Astrid",
+  "apellido": "Hidalgo"
+}
+
+###################ELIMINAR ODONTOLOGOS POR ID
+DELETE http://localhost:8081/odontologos/1 HTTP/1.1
+
+
+
+

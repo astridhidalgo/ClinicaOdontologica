@@ -1,7 +1,9 @@
 package com.backend.clinicaodontologica.controller;
 
 import com.backend.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaDto;
+import com.backend.clinicaodontologica.dto.modificacion.OdontologoModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
+import com.backend.clinicaodontologica.exceptions.BadRequestException;
 import com.backend.clinicaodontologica.service.IOdontologoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +24,7 @@ public class OdontologoController {
 
     //POST
     @PostMapping("/registrar")
-    public ResponseEntity<OdontologoSalidaDto> registrarPaciente(@RequestBody @Valid OdontologoEntradaDto odontologo){
+    public ResponseEntity<OdontologoSalidaDto> registrarPaciente(@RequestBody @Valid OdontologoEntradaDto odontologo) throws BadRequestException {
         return new ResponseEntity<>(odontologoService.registrarOdontologo(odontologo), HttpStatus.CREATED);
     }
 
@@ -39,13 +41,13 @@ public class OdontologoController {
 
     //PUT
     @PutMapping("/actualizar")
-    public OdontologoSalidaDto actualizarPaciente(@RequestBody OdontologoEntradaDto odontologo){
+    public OdontologoSalidaDto actualizarPaciente(@RequestBody OdontologoModificacionEntradaDto odontologo) throws Exception {
         return odontologoService.actualizarOdontologo(odontologo);
     }
 
     //DELETE
     @DeleteMapping("/{id}")
-    public void EliminarPaciente(@PathVariable Long id){
+    public void EliminarPaciente(@PathVariable Long id) throws BadRequestException {
         odontologoService.eliminarOdontologo(id);
     }
 }

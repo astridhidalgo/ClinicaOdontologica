@@ -9,6 +9,7 @@ public class Odontologo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Column(length = 50)
     private String matricula;
     @Column(length = 50)
