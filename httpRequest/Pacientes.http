@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ###################BUSCAR PACIENTE POR ID
-GET http://localhost:8081/pacientes/1 HTTP/1.1
+GET http://localhost:8081/pacientes/2 HTTP/1.1
 
 ###################BUSCAR TODOS LOS PACIENTES
 GET http://localhost:8081/pacientes/listar HTTP/1.1

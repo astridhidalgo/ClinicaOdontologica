@@ -4,6 +4,7 @@ import com.backend.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaD
 import com.backend.clinicaodontologica.dto.modificacion.OdontologoModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.clinicaodontologica.exceptions.BadRequestException;
+import com.backend.clinicaodontologica.exceptions.ResourceNotFoundException;
 import com.backend.clinicaodontologica.service.IOdontologoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,13 +42,13 @@ public class OdontologoController {
 
     //PUT
     @PutMapping("/actualizar")
-    public OdontologoSalidaDto actualizarPaciente(@RequestBody OdontologoModificacionEntradaDto odontologo) throws Exception {
+    public OdontologoSalidaDto actualizarPaciente(@RequestBody OdontologoModificacionEntradaDto odontologo) throws ResourceNotFoundException {
         return odontologoService.actualizarOdontologo(odontologo);
     }
 
     //DELETE
     @DeleteMapping("/{id}")
-    public void EliminarPaciente(@PathVariable Long id) throws BadRequestException {
+    public void EliminarPaciente(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
     }
 }

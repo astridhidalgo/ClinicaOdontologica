@@ -7,6 +7,7 @@ import com.backend.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
 import com.backend.clinicaodontologica.entity.Odontologo;
 import com.backend.clinicaodontologica.entity.Paciente;
 import com.backend.clinicaodontologica.exceptions.BadRequestException;
+import com.backend.clinicaodontologica.exceptions.ResourceNotFoundException;
 import com.backend.clinicaodontologica.repository.OdontologoRepository;
 import com.backend.clinicaodontologica.service.IOdontologoService;
 import com.backend.clinicaodontologica.utils.JsonPrinter;
@@ -72,7 +73,7 @@ public class OdontologoService implements IOdontologoService {
     }
 
     @Override
-    public OdontologoSalidaDto actualizarOdontologo(OdontologoModificacionEntradaDto odontologo) throws Exception {
+    public OdontologoSalidaDto actualizarOdontologo(OdontologoModificacionEntradaDto odontologo) throws ResourceNotFoundException {
         Odontologo odontologoRecibido = modelMapper.map(odontologo, Odontologo.class);
         Odontologo odontologoActualizar = odontologoRepository.findById(odontologoRecibido.getId()).orElse(null);
 
@@ -87,7 +88,7 @@ public class OdontologoService implements IOdontologoService {
 
         } else {
             LOGGER.error("No fue posible actualizar el odontologo porque no se encuentra en nuestra base de datos");
-            throw new Exception("No fue posible actualizar el odontologo porque no se encuentra en nuestra base de datos");
+            throw new ResourceNotFoundException("No fue posible actualizar el odontologo porque no se encuentra en nuestra base de datos");
         }
         return odontologoSalidaDto;
     }

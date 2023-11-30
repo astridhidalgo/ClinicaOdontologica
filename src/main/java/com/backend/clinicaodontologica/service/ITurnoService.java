@@ -5,6 +5,7 @@ package com.backend.clinicaodontologica.service;
 import com.backend.clinicaodontologica.dto.entrada.turno.TurnoEntradaDto;
 import com.backend.clinicaodontologica.dto.modificacion.TurnoModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
+import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto_old;
 import com.backend.clinicaodontologica.exceptions.BadRequestException;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 public interface ITurnoService {
     TurnoSalidaDto registrarTurno(TurnoEntradaDto turno) throws BadRequestException;
     List<TurnoSalidaDto> listarTurnos();
-    TurnoSalidaDto buscarTurnoPorId(Long id);
-    TurnoSalidaDto actualizarTurno(TurnoModificacionEntradaDto turno);
-    void eliminarTurno(Long id);
+    TurnoSalidaDto buscarTurnoPorId(Long id) throws BadRequestException;
+    TurnoSalidaDto actualizarTurno(TurnoModificacionEntradaDto turno) throws BadRequestException;
+    void eliminarTurno(Long id) throws BadRequestException;
 }

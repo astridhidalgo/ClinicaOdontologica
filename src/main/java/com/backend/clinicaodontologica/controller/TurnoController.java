@@ -3,6 +3,7 @@ package com.backend.clinicaodontologica.controller;
 import com.backend.clinicaodontologica.dto.entrada.turno.TurnoEntradaDto;
 import com.backend.clinicaodontologica.dto.modificacion.TurnoModificacionEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
+import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto_old;
 
 import com.backend.clinicaodontologica.exceptions.BadRequestException;
 import com.backend.clinicaodontologica.service.ITurnoService;
@@ -31,7 +32,7 @@ public class TurnoController {
 
     //GET
     @GetMapping("{id}")
-    public ResponseEntity<TurnoSalidaDto> obtenerTurnoPorId(@PathVariable Long id){
+    public ResponseEntity<TurnoSalidaDto> obtenerTurnoPorId(@PathVariable Long id) throws BadRequestException {
         return new ResponseEntity<>(turnoService.buscarTurnoPorId(id), HttpStatus.OK);
     }
 
@@ -42,13 +43,13 @@ public class TurnoController {
 
     //PUT
     @PutMapping("/actualizar")
-    public TurnoSalidaDto actualizarTurno(@RequestBody TurnoModificacionEntradaDto turno){
+    public TurnoSalidaDto actualizarTurno(@RequestBody TurnoModificacionEntradaDto turno) throws BadRequestException {
         return turnoService.actualizarTurno(turno);
     }
 
     //DELETE
     @DeleteMapping("/{id}")
-    public void EliminarTurno(@PathVariable Long id){
+    public void EliminarTurno(@PathVariable Long id) throws BadRequestException {
         turnoService.eliminarTurno(id);
     }
 }

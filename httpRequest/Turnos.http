@@ -1,0 +1,44 @@
+###################CREAR PACIENTE POR ID
+POST http://localhost:8081/turnos/registrar HTTP/1.1
+Content-Type: application/json
+
+{
+"paciente":1,
+"odontologo":1,
+"fechayHora": "2023-11-17T15:30:00"
+}
+
+###################BUSCAR TURNO POR ID
+GET http://localhost:8081/turnos/1 HTTP/1.1
+
+###################BUSCAR TODOS LOS TURNOS
+GET http://localhost:8081/turnos/listar HTTP/1.1
+
+###################ACTUALIZAR TURNOS POR ID
+PUT http://localhost:8081/turnos/actualizar HTTP/1.1
+Content-Type: application/json
+
+{
+  "paciente":2,
+  "odontologo":1,
+  "fechayHora": "2023-11-17T15:30:00"
+}
+###################ELIMINAR PACIENTE POR ID
+DELETE http://localhost:8081/turnos/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre":"Astrid",
+  "apellido": "Hidalgo",
+  "dni": 123456,
+  "fechaIngreso": "2023-12-10",
+  "domicilioEntradaDto":{
+    "calle": "argomedo",
+    "numero":344,
+    "localidad":"santiago",
+    "provincia": "santiago"
+  }
+}
+
+
+
