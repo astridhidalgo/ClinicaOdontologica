@@ -1,17 +1,18 @@
-PUT http://localhost:8081/turnos/actualizar
-Content-Type: application/json
-Content-Length: 75
+GET http://localhost:8081/turnos/3
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{
-  "paciente":2,
-  "odontologo":1,
-  "fechayHora": "2023-11-17T15:30:00"
-}
+<> 2023-11-30T185504.200.json
 
-<> 2023-11-30T003723.400.json
+###
+
+GET http://localhost:8081/turnos/listar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-11-30T185454.200.json
 
 ###
 
@@ -25,73 +26,199 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 {
 "paciente":1,
 "odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
+"fechaYHora": "2023-11-15T17:15:00"
 }
 
-<> 2023-11-30T003650.201.json
+<> 2023-11-30T185431.201.json
 
 ###
 
-POST http://localhost:8081/odontologos/registrar
+POST http://localhost:8081/turnos/registrar
 Content-Type: application/json
-Content-Length: 71
+Content-Length: 69
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
+"paciente":1,
+"odontologo":1,
+"fechaYHora": "2023-11-15T16:15:00"
 }
 
-<> 2023-11-30T003635.201.json
+<> 2023-11-30T185422.400.json
 
 ###
 
-POST http://localhost:8081/pacientes/registrar
+GET http://localhost:8081/turnos/2
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-11-30T185416.200.json
+
+###
+
+POST http://localhost:8081/turnos/registrar
 Content-Type: application/json
-Content-Length: 222
+Content-Length: 69
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-"nombre":"Maria",
-  "apellido": "Mora",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-     "provincia": "santiago"
-  }
+"paciente":1,
+"odontologo":1,
+"fechaYHora": "2023-11-15T16:15:00"
 }
 
-<> 2023-11-30T003633.201.json
+<> 2023-11-30T185411.201.json
+
+###
+
+GET http://localhost:8081/turnos/listar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-11-30T185400.404.json
 
 ###
 
 DELETE http://localhost:8081/turnos/1
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+PUT http://localhost:8081/turnos/actualizar
 Content-Type: application/json
-Content-Length: 227
+Content-Length: 457
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "nombre":"Astrid",
+  "id": 1,
+  "paciente": {
+    "id": 1,
+    "nombre": "Carlos",
+    "apellido": "Mora",
+    "dni": 123456,
+    "fechaIngreso": "2023-12-10",
+    "domicilio": {
+      "id": 1,
+      "calle": "argomedo",
+      "numero": 344,
+      "localidad": "santiago",
+      "provincia": "santiago"
+    }
+  },
+  "odontologo": {
+    "id": 1,
+    "matricula": "123456789111",
+    "nombre": "Astrid 1",
+    "apellido": "Hidalgo"
+  },
+  "fechaYHora": "2023-11-15T16:15:00"
+}
+
+<> 2023-11-30T185343.200.json
+
+###
+
+POST http://localhost:8081/turnos/registrar
+Content-Type: application/json
+Content-Length: 69
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"paciente":1,
+"odontologo":1,
+"fechaYHora": "2023-11-15T16:15:00"
+}
+
+<> 2023-11-30T185259.201.json
+
+###
+
+POST http://localhost:8081/pacientes/registrar
+Content-Type: application/json
+Content-Length: 222
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"nombre":"Maria",
+  "apellido": "Mora",
+  "dni": 123456,
+  "fechaIngreso": "2023-12-10",
+  "domicilioEntradaDto":{
+    "calle": "argomedo",
+    "numero":344,
+    "localidad":"santiago",
+     "provincia": "santiago"
+  }
+}
+
+<> 2023-11-30T185250.201.json
+
+###
+
+POST http://localhost:8081/odontologos/registrar
+Content-Type: application/json
+Content-Length: 79
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"nombre":"Astrid 1",
   "apellido": "Hidalgo",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-    "provincia": "santiago"
-  }
+  "matricula": "123456789111"
 }
+
+<> 2023-11-30T185248.201.json
+
+###
+
+PUT http://localhost:8081/turnos/actualizar
+Content-Type: application/json
+Content-Length: 454
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 1,
+  "paciente": {
+    "id": 1,
+    "nombre": "carlos",
+    "apellido": "Mora",
+    "dni": 123456,
+    "fechaIngreso": "2023-12-10",
+    "domicilio": {
+      "id": 1,
+      "calle": "argomedo",
+      "numero": 344,
+      "localidad": "santiago",
+      "provincia": "santiago"
+    }
+  },
+  "odontologo": {
+    "id": 1,
+    "matricula": "123456789111",
+    "nombre": "Astrid 1",
+    "apellido": "Hidalgo"
+  },
+  "fechaYHora": "2023-11-15T16:15"
+}
+
+<> 2023-11-30T185145.400.json
 
 ###
 
@@ -105,27 +232,10 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 {
 "paciente":1,
 "odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
+"fechaYHora": "2023-11-15T16:15:00"
 }
 
-<> 2023-11-30T002811.201.json
-
-###
-
-POST http://localhost:8081/odontologos/registrar
-Content-Type: application/json
-Content-Length: 71
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
-}
-
-<> 2023-11-30T002807.201.json
+<> 2023-11-30T185102.201.json
 
 ###
 
@@ -149,7 +259,208 @@ Accept-Encoding: br,deflate,gzip,x-gzip
   }
 }
 
-<> 2023-11-30T002758.201.json
+<> 2023-11-30T185045.201.json
+
+###
+
+POST http://localhost:8081/odontologos/registrar
+Content-Type: application/json
+Content-Length: 79
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"nombre":"Astrid 1",
+  "apellido": "Hidalgo",
+  "matricula": "123456789111"
+}
+
+<> 2023-11-30T185043.201.json
+
+###
+
+PUT http://localhost:8081/turnos/actualizar
+Content-Type: application/json
+Content-Length: 457
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 1,
+  "paciente": {
+    "id": 1,
+    "nombre": "Carlos",
+    "apellido": "Mora",
+    "dni": 123456,
+    "fechaIngreso": "2023-12-10",
+    "domicilio": {
+      "id": 1,
+      "calle": "argomedo",
+      "numero": 344,
+      "localidad": "santiago",
+      "provincia": "santiago"
+    }
+  },
+  "odontologo": {
+    "id": 1,
+    "matricula": "123456789111",
+    "nombre": "Astrid 1",
+    "apellido": "Hidalgo"
+  },
+  "fechaYHora": "2023-11-15T16:15:00"
+}
+
+<> 2023-11-30T184852.400.json
+
+###
+
+PUT http://localhost:8081/turnos/actualizar
+Content-Type: application/json
+Content-Length: 454
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 1,
+  "paciente": {
+    "id": 1,
+    "nombre": "Carlos",
+    "apellido": "Mora",
+    "dni": 123456,
+    "fechaIngreso": "2023-12-10",
+    "domicilio": {
+      "id": 1,
+      "calle": "argomedo",
+      "numero": 344,
+      "localidad": "santiago",
+      "provincia": "santiago"
+    }
+  },
+  "odontologo": {
+    "id": 1,
+    "matricula": "123456789111",
+    "nombre": "Astrid 1",
+    "apellido": "Hidalgo"
+  },
+  "fechaYHora": "2023-11-15 16:15"
+}
+
+<> 2023-11-30T184655.400.json
+
+###
+
+POST http://localhost:8081/turnos/registrar
+Content-Type: application/json
+Content-Length: 69
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"paciente":1,
+"odontologo":1,
+"fechaYHora": "2023-11-15T16:15:00"
+}
+
+<> 2023-11-30T184624.201.json
+
+###
+
+POST http://localhost:8081/pacientes/registrar
+Content-Type: application/json
+Content-Length: 222
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"nombre":"Maria",
+  "apellido": "Mora",
+  "dni": 123456,
+  "fechaIngreso": "2023-12-10",
+  "domicilioEntradaDto":{
+    "calle": "argomedo",
+    "numero":344,
+    "localidad":"santiago",
+     "provincia": "santiago"
+  }
+}
+
+<> 2023-11-30T184615.201.json
+
+###
+
+POST http://localhost:8081/odontologos/registrar
+Content-Type: application/json
+Content-Length: 79
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"nombre":"Astrid 1",
+  "apellido": "Hidalgo",
+  "matricula": "123456789111"
+}
+
+<> 2023-11-30T184613.201.json
+
+###
+
+PUT http://localhost:8081/turnos/actualizar
+Content-Type: application/json
+Content-Length: 456
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 2,
+  "paciente": {
+    "id": 1,
+    "nombre": "Carlos",
+    "apellido": "Mora",
+    "dni": 123456,
+    "fechaIngreso": "2023-12-10",
+    "domicilio": {
+      "id": 1,
+      "calle": "argomedo",
+      "numero": 344,
+      "localidad": "santiago",
+      "provincia": "santiago"
+    }
+  },
+  "odontologo": {
+    "id": 1,
+    "matricula": "123456789111",
+    "nombre": "Astrid 1",
+    "apellido": "Hidalgo"
+  },
+  "fechaYHora": "2023-11-15'T'16:15"
+}
+
+<> 2023-11-30T184429.400.json
+
+###
+
+GET http://localhost:8081/turnos/listar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-11-30T184317.200.json
+
+###
+
+GET http://localhost:8081/turnos/2
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-11-30T184309.200.json
 
 ###
 
@@ -158,7 +469,57 @@ Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-11-29T235851.500.json
+<> 2023-11-30T184240.400.json
+
+###
+
+POST http://localhost:8081/turnos/registrar
+Content-Type: application/json
+Content-Length: 69
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"paciente":1,
+"odontologo":1,
+"fechaYHora": "2023-11-15T16:15:00"
+}
+
+<> 2023-11-30T184231.201.json
+
+###
+
+GET http://localhost:8081/turnos/listar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-11-30T184222.404.json
+
+###
+
+DELETE http://localhost:8081/turnos/1
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+POST http://localhost:8081/turnos/registrar
+Content-Type: application/json
+Content-Length: 69
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"paciente":1,
+"odontologo":1,
+"fechayHora": "2023-11-15T16:15:00"
+}
+
+<> 2023-11-30T184119.201.json
 
 ###
 
@@ -182,24 +543,257 @@ Accept-Encoding: br,deflate,gzip,x-gzip
   }
 }
 
-<> 2023-11-29T235836.201.json
+<> 2023-11-30T184109.201.json
 
 ###
 
 POST http://localhost:8081/odontologos/registrar
 Content-Type: application/json
-Content-Length: 71
+Content-Length: 79
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
+"nombre":"Astrid 1",
+  "apellido": "Hidalgo",
+  "matricula": "123456789111"
 }
 
-<> 2023-11-29T235832.201.json
+<> 2023-11-30T184107.201.json
+
+###
+
+PUT http://localhost:8081/turnos/actualizar
+Content-Type: application/json
+Content-Length: 456
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 1,
+  "paciente": {
+    "id": 1,
+    "nombre": "Carlos",
+    "apellido": "Mora",
+    "dni": 123456,
+    "fechaIngreso": "2023-12-10",
+    "domicilio": {
+      "id": 1,
+      "calle": "argomedo",
+      "numero": 344,
+      "localidad": "santiago",
+      "provincia": "santiago"
+    }
+  },
+  "odontologo": {
+    "id": 1,
+    "matricula": "123456789111",
+    "nombre": "Astrid 1",
+    "apellido": "Hidalgo"
+  },
+  "fechaYHora": "2023-11-15'T'16:15"
+}
+
+<> 2023-11-30T182701.200.json
+
+###
+
+POST http://localhost:8081/turnos/registrar
+Content-Type: application/json
+Content-Length: 69
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"paciente":1,
+"odontologo":1,
+"fechayHora": "2023-11-15T16:15:00"
+}
+
+<> 2023-11-30T182646.201.json
+
+###
+
+POST http://localhost:8081/pacientes/registrar
+Content-Type: application/json
+Content-Length: 222
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"nombre":"Maria",
+  "apellido": "Mora",
+  "dni": 123456,
+  "fechaIngreso": "2023-12-10",
+  "domicilioEntradaDto":{
+    "calle": "argomedo",
+    "numero":344,
+    "localidad":"santiago",
+     "provincia": "santiago"
+  }
+}
+
+<> 2023-11-30T182636.201.json
+
+###
+
+POST http://localhost:8081/odontologos/registrar
+Content-Type: application/json
+Content-Length: 79
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"nombre":"Astrid 1",
+  "apellido": "Hidalgo",
+  "matricula": "123456789111"
+}
+
+<> 2023-11-30T182634.201.json
+
+###
+
+PUT http://localhost:8081/turnos/actualizar
+Content-Type: application/json
+Content-Length: 456
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 1,
+  "paciente": {
+    "id": 1,
+    "nombre": "Carlos",
+    "apellido": "Mora",
+    "dni": 123456,
+    "fechaIngreso": "2023-12-10",
+    "domicilio": {
+      "id": 1,
+      "calle": "argomedo",
+      "numero": 344,
+      "localidad": "santiago",
+      "provincia": "santiago"
+    }
+  },
+  "odontologo": {
+    "id": 1,
+    "matricula": "123456789111",
+    "nombre": "Astrid 1",
+    "apellido": "Hidalgo"
+  },
+  "fechaYHora": "2023-11-15'T'16:15"
+}
+
+<> 2023-11-30T182314.200.json
+
+###
+
+PUT http://localhost:8081/turnos/actualizar
+Content-Type: application/json
+Content-Length: 454
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 1,
+  "paciente": {
+    "id": 1,
+    "nombre": "Carlos",
+    "apellido": "Mora",
+    "dni": 123456,
+    "fechaIngreso": "2023-12-10",
+    "domicilio": {
+      "id": 1,
+      "calle": "argomedo",
+      "numero": 344,
+      "localidad": "santiago",
+      "provincia": "santiago"
+    }
+  },
+  "odontologo": {
+    "id": 1,
+    "matricula": "123456789111",
+    "nombre": "Astrid 1",
+    "apellido": "Hidalgo"
+  },
+  "fechaYHora": "2023-11-15 16:15"
+}
+
+<> 2023-11-30T182224.200.json
+
+###
+
+POST http://localhost:8081/turnos/registrar
+Content-Type: application/json
+Content-Length: 69
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"paciente":1,
+"odontologo":1,
+"fechayHora": "2023-11-15T16:15:00"
+}
+
+<> 2023-11-30T182104.201.json
+
+###
+
+POST http://localhost:8081/odontologos/registrar
+Content-Type: application/json
+Content-Length: 79
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"nombre":"Astrid 1",
+  "apellido": "Hidalgo",
+  "matricula": "123456789111"
+}
+
+<> 2023-11-30T182052.201.json
+
+###
+
+POST http://localhost:8081/pacientes/registrar
+Content-Type: application/json
+Content-Length: 222
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+"nombre":"Maria",
+  "apellido": "Mora",
+  "dni": 123456,
+  "fechaIngreso": "2023-12-10",
+  "domicilioEntradaDto":{
+    "calle": "argomedo",
+    "numero":344,
+    "localidad":"santiago",
+     "provincia": "santiago"
+  }
+}
+
+<> 2023-11-30T182038.201.json
+
+###
+
+GET http://localhost:8081/turnos/listar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-11-30T175533.200.json
 
 ###
 
@@ -208,65 +802,12 @@ Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-11-29T231731.500.json
-
 ###
 
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
+DELETE http://localhost:8081/turnos/1
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T231728.201.json
-
-###
-
-POST http://localhost:8081/odontologos/registrar
-Content-Type: application/json
-Content-Length: 71
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
-}
-
-<> 2023-11-29T231726.201.json
-
-###
-
-POST http://localhost:8081/pacientes/registrar
-Content-Type: application/json
-Content-Length: 222
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Maria",
-  "apellido": "Mora",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-     "provincia": "santiago"
-  }
-}
-
-<> 2023-11-29T231724.201.json
 
 ###
 
@@ -275,7 +816,16 @@ Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-11-29T230944.500.json
+<> 2023-11-30T175253.200.json
+
+###
+
+GET http://localhost:8081/turnos/listar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-11-30T175247.200.json
 
 ###
 
@@ -289,27 +839,10 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 {
 "paciente":1,
 "odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
+"fechayHora": "2023-11-15T16:15:00"
 }
 
-<> 2023-11-29T230937.201.json
-
-###
-
-POST http://localhost:8081/odontologos/registrar
-Content-Type: application/json
-Content-Length: 71
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
-}
-
-<> 2023-11-29T230930.201.json
+<> 2023-11-30T175240.201.json
 
 ###
 
@@ -333,65 +866,33 @@ Accept-Encoding: br,deflate,gzip,x-gzip
   }
 }
 
-<> 2023-11-29T230928.201.json
-
-###
-
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T230010.201.json
+<> 2023-11-30T175233.201.json
 
 ###
 
 POST http://localhost:8081/odontologos/registrar
 Content-Type: application/json
-Content-Length: 71
+Content-Length: 79
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
+"nombre":"Astrid 1",
+  "apellido": "Hidalgo",
+  "matricula": "123456789111"
 }
 
-<> 2023-11-29T230006.201.json
+<> 2023-11-30T175226.201.json
 
 ###
 
-POST http://localhost:8081/pacientes/registrar
-Content-Type: application/json
-Content-Length: 222
+GET http://localhost:8081/turnos/listar
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-{
-"nombre":"Maria",
-  "apellido": "Mora",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-     "provincia": "santiago"
-  }
-}
-
-<> 2023-11-29T230004.201.json
+<> 2023-11-30T172921.200.json
 
 ###
 
@@ -399,476 +900,6 @@ GET http://localhost:8081/turnos/1
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-11-29T223621.500.json
-
-###
-
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T223617.201.json
-
-###
-
-POST http://localhost:8081/pacientes/registrar
-Content-Type: application/json
-Content-Length: 222
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Maria",
-  "apellido": "Mora",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-     "provincia": "santiago"
-  }
-}
-
-<> 2023-11-29T223601.201.json
-
-###
-
-POST http://localhost:8081/odontologos/registrar
-Content-Type: application/json
-Content-Length: 71
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
-}
-
-<> 2023-11-29T223558.201.json
-
-###
-
-GET http://localhost:8081/turnos/1
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-11-29T221726.200.json
-
-###
-
-GET http://localhost:8081/turnos/1
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-11-29T155328.200.json
-
-###
-
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T155325.201.json
-
-###
-
-POST http://localhost:8081/pacientes/registrar
-Content-Type: application/json
-Content-Length: 222
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Maria",
-  "apellido": "Mora",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-     "provincia": "santiago"
-  }
-}
-
-<> 2023-11-29T155321.201.json
-
-###
-
-POST http://localhost:8081/odontologos/registrar
-Content-Type: application/json
-Content-Length: 71
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
-}
-
-<> 2023-11-29T155315.201.json
-
-###
-
-GET http://localhost:8081/turnos/1
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-11-29T135020.500.json
-
-###
-
-GET http://localhost:8081/turnos/1
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-11-29T134844.500.json
-
-###
-
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T134842.201.json
-
-###
-
-POST http://localhost:8081/pacientes/registrar
-Content-Type: application/json
-Content-Length: 222
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Maria",
-  "apellido": "Mora",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-     "provincia": "santiago"
-  }
-}
-
-<> 2023-11-29T134838.201.json
-
-###
-
-POST http://localhost:8081/odontologos/registrar
-Content-Type: application/json
-Content-Length: 71
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
-}
-
-<> 2023-11-29T134836.201.json
-
-###
-
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T133901.201.json
-
-###
-
-POST http://localhost:8081/pacientes/registrar
-Content-Type: application/json
-Content-Length: 222
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Maria",
-  "apellido": "Mora",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-     "provincia": "santiago"
-  }
-}
-
-<> 2023-11-29T133859.201.json
-
-###
-
-POST http://localhost:8081/odontologos/registrar
-Content-Type: application/json
-Content-Length: 71
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
-}
-
-<> 2023-11-29T133856.201.json
-
-###
-
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T132039.400.json
-
-###
-
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T132035.201.json
-
-###
-
-POST http://localhost:8081/pacientes/registrar
-Content-Type: application/json
-Content-Length: 222
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Maria",
-  "apellido": "Mora",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-     "provincia": "santiago"
-  }
-}
-
-<> 2023-11-29T132030.201.json
-
-###
-
-POST http://localhost:8081/odontologos/registrar
-Content-Type: application/json
-Content-Length: 71
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
-}
-
-<> 2023-11-29T131925.201.json
-
-###
-
-GET http://localhost:8081/pacientes/2
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-11-29T113751.500.json
-
-###
-
-POST http://localhost:8081/pacientes/registrar
-Content-Type: application/json
-Content-Length: 222
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Maria",
-  "apellido": "Mora",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-     "provincia": "santiago"
-  }
-}
-
-<> 2023-11-29T113744.201.json
-
-###
-
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T111609.201.json
-
-###
-
-POST http://localhost:8081/pacientes/registrar
-Content-Type: application/json
-Content-Length: 222
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Maria",
-  "apellido": "Mora",
-  "dni": 123456,
-  "fechaIngreso": "2023-12-10",
-  "domicilioEntradaDto":{
-    "calle": "argomedo",
-    "numero":344,
-    "localidad":"santiago",
-     "provincia": "santiago"
-  }
-}
-
-<> 2023-11-29T111602.201.json
-
-###
-
-POST http://localhost:8081/odontologos/registrar
-Content-Type: application/json
-Content-Length: 71
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
-}
-
-<> 2023-11-29T111556.201.json
-
-###
-
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T111508.201.json
-
-###
-
-POST http://localhost:8081/turnos/registrar
-Content-Type: application/json
-Content-Length: 69
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-"paciente":1,
-"odontologo":1,
-"fechayHora": "2023-11-17T15:30:00"
-}
-
-<> 2023-11-29T111331.201.json
 
 ###
 

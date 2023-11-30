@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TurnoModificacionEntradaDto {
@@ -16,8 +17,8 @@ public class TurnoModificacionEntradaDto {
     private int id;
     @FutureOrPresent(message = "La fecha no puede ser anterior al día de hoy")
     @NotNull(message = "Debe especificarse la fecha de ingreso del paciente")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate fechayHora;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime fechaYHora;
 
     @NotNull(message = "El odontologo para el turno no puede ser nulo")
     @Valid
@@ -29,9 +30,9 @@ public class TurnoModificacionEntradaDto {
     public TurnoModificacionEntradaDto() {
     }
 
-    public TurnoModificacionEntradaDto(int id, LocalDate fechayHora, Odontologo odontologo, Paciente paciente) {
+    public TurnoModificacionEntradaDto(int id, LocalDateTime fechaYHora, Odontologo odontologo, Paciente paciente) {
         this.id = id;
-        this.fechayHora = fechayHora;
+        this.fechaYHora = fechaYHora;
         this.odontologo = odontologo;
         this.paciente = paciente;
     }
@@ -44,12 +45,12 @@ public class TurnoModificacionEntradaDto {
         this.id = id;
     }
 
-    public LocalDate getFechayHora() {
-        return fechayHora;
+    public LocalDateTime getFechaYHora() {
+        return fechaYHora;
     }
 
-    public void setFechayHora(LocalDate fechayHora) {
-        this.fechayHora = fechayHora;
+    public void setFechaYHora(LocalDateTime fechaYHora) {
+        this.fechaYHora = fechaYHora;
     }
 
     public Odontologo getOdontologo() {

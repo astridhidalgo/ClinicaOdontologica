@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TurnoEntradaDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime fechayHora;
+    private LocalDateTime fechaYHora;
     @NotNull(message = "el odontólogoId no puede ser nulo")
     private Long odontologo;
     @NotNull(message = "el pacienteId no puede ser nulo")
@@ -21,18 +21,18 @@ public class TurnoEntradaDto {
     public TurnoEntradaDto() {
     }
 
-    public TurnoEntradaDto(LocalDateTime fechayHora, Long odontologo, Long paciente) {
-        this.fechayHora = fechayHora;
+    public TurnoEntradaDto(LocalDateTime fechaYHora, Long odontologo, Long paciente) {
+        this.fechaYHora = fechaYHora;
         this.odontologo = odontologo;
         this.paciente = paciente;
     }
 
-    public LocalDateTime getFechayHora() {
-        return fechayHora;
+    public LocalDateTime getFechaYHora() {
+        return fechaYHora;
     }
 
-    public void setFechayHora(LocalDateTime fechayHora) {
-        this.fechayHora = fechayHora;
+    public void setFechaYHora(LocalDateTime fechaYHora) {
+        this.fechaYHora = fechaYHora;
     }
 
     public Long getOdontologo() {

@@ -6,6 +6,7 @@ import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
 import com.backend.clinicaodontologica.dto.salida.turno.TurnoSalidaDto_old;
 
 import com.backend.clinicaodontologica.exceptions.BadRequestException;
+import com.backend.clinicaodontologica.exceptions.ResourceNotFoundException;
 import com.backend.clinicaodontologica.service.ITurnoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public class TurnoController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<TurnoSalidaDto>> listarTurnos(){
+    public ResponseEntity<List<TurnoSalidaDto>> listarTurnos() throws ResourceNotFoundException {
         return new ResponseEntity<>(turnoService.listarTurnos(), HttpStatus.OK);
     }
 

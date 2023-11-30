@@ -3,9 +3,9 @@ POST http://localhost:8081/odontologos/registrar HTTP/1.1
 Content-Type: application/json
 
 {
-"nombre":"Fer",
-  "apellido": "Mercy",
-  "matricula": "12345678911"
+"nombre":"Astrid 1",
+  "apellido": "Hidalgo",
+  "matricula": "123456789111"
 }
 
 ###################BUSCAR DONTOLOGO POR ID

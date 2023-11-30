@@ -13,11 +13,10 @@ public class Turno {
 
     private LocalDateTime fechaYHora;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "odontologo_id")
     private Odontologo odontologo;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
