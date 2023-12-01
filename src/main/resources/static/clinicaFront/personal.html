@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinica Odontologica - Personal</title>
+    <link rel="icon" type="image/x-icon" href="./assets/smile_Logo.png">
+    <meta name="description" content="Digital House CTD | Proyecto integrador | BACKEND" />
+
+    <!-- Estilos compartidos -->
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- Lógica aplicada para renderizar odontólogos -->
+    <script src="./scripts/renderodontologo.js"></script>
+    <script src="./scripts/buscarodontologoid.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>Clinica Odontologica Smile</h1>
+            <a href="/index.html">
+                <img src="./assets/smile_Logo.png" alt="logo Clinica Smile">
+            </a>
+        </nav>
+    </header>
+
+    <div class="odonto-container">
+        <div class="odonto-info-container">
+            <h2 class="registro-titulo">Buscar Odontologo</h2>
+        </div>
+    </div>
+
+    <section class="main-container">
+
+        <article class="odonto-container">
+
+            <div class="odonto-info-container">
+
+                <form id="buscarFormId">
+                    <div class="form-header">
+
+                        <p class="rounded">Busqueda por id</p>
+                    </div>
+                    <label for="inputOdontologoId">ID de odontologo</label>
+                    <input id="inputOdontologoId" type="number">
+
+                    <button type="submit">Buscar</button>
+                </form>
+
+                <div class="lista-odontologo">
+                    <ul id="odontologoInfoId">
+                    </ul>
+
+                </div>
+            </div>
+        </article>
+
+    </section>
+
+    <article class="odonto-container">
+
+        <div class="odonto-info-container">
+
+            <h2 class="registro-titulo">Lista de Odontologos</h2>
+            <div class="lista-odontologo">
+                <ul id="odontologoDetails"></ul>
+            </div>
+        </div>
+    </article>
+
+
+
+
+    <div class="ingresarA">
+        <a href="index.html">Volver al home</a>
+    </div>
+
+</body>
+
+</html>

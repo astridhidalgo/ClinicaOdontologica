@@ -32,6 +32,7 @@ public class PacienteService implements IPacienteService {
         configureMapping();
     }
 
+
     public PacienteSalidaDto registrarPaciente(PacienteEntradaDto paciente) {
         LOGGER.info("PacienteEntradaDto: " + JsonPrinter.toString(paciente));
         Paciente pacienteEntidad = modelMapper.map(paciente, Paciente.class);

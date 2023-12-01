@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinica Odontologica</title>
+    <link rel="icon" type="image/x-icon" href="./assets/smile_Logo.png">
+    <meta name="description" content="Digital House CTD | Proyecto integrador | BACKEND" />
+
+
+    <!-- ---------------- estilos compartidos ---------------- -->
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- ---------------------- logica aplicada en toma de turnos -------------------- -->
+    <script src="./scripts/tomaturnos.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>Clinica Odontologica Smile</h1>
+            <a href="/index.html">
+                <img src="./assets/smile_Logo.png" alt="logo Clinica Smile">
+            </a>
+        </nav>
+    </header>
+
+    <section class="toma-turnos">
+        <form>
+            <div class="form-header">
+                <h2>Clinica Odontologica</h2>
+                <p class="rounded">Toma de turnos</p>
+            </div>
+
+            <label for="paciente">Paciente</label>
+            <select id="paciente" required>
+            </select>
+
+            <label for="odontologo">Odontólogo</label>
+            <select id="odontologo" required>
+            </select>
+
+            <label for="turno">Fecha y Hora de la Cita</label>
+            <select id="turno" required>
+                <option value="2023-11-17T09:00:00">17 de Noviembre, 9:00 AM</option>
+                <option value="2023-11-18T14:30:00">18 de Noviembre, 2:30 PM</option>
+                <option value="2023-11-19T11:00:00">19 de Noviembre, 11:00 AM</option>
+            </select>
+
+            <button type="button">Tomar Turno</button>
+        </form>
+
+        <div class="ingresarA">
+            <a href="index.html">Volver al home</a>
+        </div>
+    </section>
+</body>
+
+</html>

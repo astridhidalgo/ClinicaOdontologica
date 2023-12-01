@@ -21,7 +21,7 @@ class PacienteServiceTest {
 
  @Test
  @Order(1)
-    void deberiaRegistrarInPacientedeNombreJuanYRetornarElId(){
+    void deberiaRegistrarUnPacientedeNombreJuanYRetornarElId(){
      PacienteEntradaDto pacienteEntradaDto = new PacienteEntradaDto("juan", "perez",123456789, LocalDate.of(2023,12,24),
      new DomicilioEntradaDto("calle", 1234, "localidad","Provincia"));
 
@@ -49,7 +49,6 @@ class PacienteServiceTest {
 
   assertTrue(pacientesDto.isEmpty());
  }
-
 
 
 }
